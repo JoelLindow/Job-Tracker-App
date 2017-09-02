@@ -24,6 +24,9 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    @comment = Comment.new
+    @comments = @job.comments.order("created_at DESC")
+    @comment.job_id = @job.id
   end
 
   def edit
@@ -46,7 +49,7 @@ class JobsController < ApplicationController
 
     flash[:success] = "#{job.title} was successfully deleted!"
     redirect_to company_path(company)
-    end
+  end
 
   private
 

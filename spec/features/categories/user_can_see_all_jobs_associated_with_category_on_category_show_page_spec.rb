@@ -9,13 +9,10 @@ describe "User views job show page" do
     job_2 = Job.create!(title: "Job_2", description: "This is job number one", level_of_interest: 30, city: "City_2", company_id: company_2.id, category_id: category.id)
 
     visit category_path(category)
-    
-    save_and_open_page
 
-    expect(current_path).to eq("/categories")
-    expect(page).to have_content("Category_1")
-    expect(page).to have_content("Category_2")
-    expect(page).to have_content("Category_3")
+    expect(current_path).to eq("/categories/#{category.id}")
+    expect(page).to have_content("Job_1")
+    expect(page).to have_content("Job_2")
 
   end
 end

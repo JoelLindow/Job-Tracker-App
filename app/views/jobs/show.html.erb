@@ -17,3 +17,8 @@ Category: <%= @job.category.title if @job.category %><br>
 <br>
 
 <%= link_to "<< Back to #{@job.company.name}", company_path(@job.company) %>
+
+<h3>Comments</h3>
+<%= render partial: 'jobs/comment', collection: @job.comments.reverse %>
+
+<%= render partial: 'comments/form' %>

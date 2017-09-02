@@ -1,0 +1,7 @@
+<ul>
+<% @comments.each do |comment| %>
+  <li> <%= comment.content %> </li>
+  <small>Created on: <%= comment.created_at.to_date %></small><br>
+  <br>
+  <% end %>
+</ul>
