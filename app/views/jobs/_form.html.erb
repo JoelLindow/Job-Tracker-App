@@ -1,15 +1,19 @@
 <%= form_for [@company, @job] do |f| %>
   <%= f.label :title %><br>
   <%= f.text_field :title %><br>
-<br>
+  <br>
   <%= f.label :description %><br>
   <%= f.text_field :description %><br>
-<br>
+  <br>
   <%= f.label :level_of_interest %><br>
   <%= f.number_field :level_of_interest %><br>
-<br>
+  <br>
   <%= f.label :city %><br>
   <%= f.text_field :city %><br>
-<br>
+  <br>
+  <%= f.label :category %><br>
+  <%= f.collection_select :category_id, @categories, :id, :title, include_blank: true %><br>
+  <%= link_to "Create A New Category", new_category_path %><br>
+  <br>
   <%= f.submit %>
-<% end %>
+  <% end %>

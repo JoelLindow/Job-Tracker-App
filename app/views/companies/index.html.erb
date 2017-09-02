@@ -1,5 +1,5 @@
 <h3 class="text-center">All Companies</h3>
-
+<h5 class="text-center"><%= link_to "Add A Company", new_company_path(@company) %></h5>
 <ul>
   <% @companies.each do |company| %>
   <li class=company_<%= company.id %>>
