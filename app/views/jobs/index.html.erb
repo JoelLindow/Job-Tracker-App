@@ -7,3 +7,16 @@
   <small> <%= link_to "Delete Job", company_job_path(@company, job), method: :delete %> </small>
 </ul>
 <% end %><br>
+
+<h4>Contacts at <%= @company.name %></h4>
+<% @contacts.each.with_index do |contact, i| %>
+<ul class="contact_<%= contact.id %>">
+  <small>Contact <%= i + 1 %></small><br>
+  <strong> Name: <%= contact.name %> </strong><br>
+  <small> <%= contact.title %> </small><br>
+  Email: <%= contact.email %>
+</ul>
+<% end %>
+
+<h4>Add New Company Contact</h4>
+<%= render partial: 'contacts/form' %>
