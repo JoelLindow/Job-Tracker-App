@@ -1,0 +1,5 @@
+<h1>DASHBOARD</h1>
+
+<% (Job.all.group_by(&:level_of_interest)).each do |key, value| %>
+<p>Tracking <%= value.count %> Jobs with a Level <%= key %> interest.</p>
+<% end %>

@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   resources :categories
 
   resources :contacts, only: [:create]
+
+  resources :dashboard, only: [:index]
 end
