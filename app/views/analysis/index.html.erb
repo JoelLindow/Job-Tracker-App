@@ -1,0 +1,10 @@
+<h3 class="text-center">Jobs sorted by <strong><%= @title %></strong></h3>
+
+<% @jobs.each do |job| %>
+<ul>
+  <h4>Job: <%= job.title %><br></h4>
+  <p>Description: <%= job.description %></p>
+  <p>Level of Interest: <%= job.level_of_interest %></p>
+  <p>City: <%= job.city %>
+</ul><br>
+<% end %>
