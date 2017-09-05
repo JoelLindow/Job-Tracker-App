@@ -18,6 +18,10 @@ body {
   font-family: 'Encode Sans Semi Condensed', sans-serif;
 }
 
+strong {
+  font-style: italic;
+}
+
 .navbar-brand {
   font-size: 28px;
   font-weight:bolder;
