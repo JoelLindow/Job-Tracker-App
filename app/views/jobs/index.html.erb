@@ -1,22 +1,44 @@
-<h3 class="text-center">All Jobs for <strong><%= @company.name %></strong></h3>
-<h5 class="text-center"><%= link_to "Add A Job", new_company_job_path(@company, @jobs) %></h5>
 
-<% @company.jobs.each do |job| %>
-<ul class="job_<%= job.id %>"><strong>  <%= link_to job.title, company_job_path(@company, job) %> </strong><br>
-  <small> <%= link_to "Edit Job", edit_company_job_path(@company, job) %> </small>
-  <small> <%= link_to "Delete Job", company_job_path(@company, job), method: :delete %> </small>
-</ul>
-<% end %><br>
+<div class="row">
+  <div class="col-md-6">
+    <h3 class="text-center">All Jobs for <strong><%= @company.name %></strong></h3>
+    <h5 class="text-center"><%= link_to "Add A Job", new_company_job_path(@company, @jobs) %></h5>
+    <div class="row">
 
-<h4>Contacts at <%= @company.name %></h4>
-<% @contacts.each.with_index do |contact, i| %>
-<ul class="contact_<%= contact.id %>">
-  <small>Contact <%= i + 1 %></small><br>
-  <strong> Name: <%= contact.name %> </strong><br>
-  <small> <%= contact.title %> </small><br>
-  Email: <%= contact.email %>
-</ul>
-<% end %>
+      <% @company.jobs.each do |job| %>
+      <div class="col-md-4">
+        <ul class="job_<%= job.id %>"><strong>  <%= link_to job.title, company_job_path(@company, job) %> </strong><br>
+          <small> <%= link_to "Edit Job", edit_company_job_path(@company, job) %> </small>
+          <small> <%= link_to "Delete Job", company_job_path(@company, job), method: :delete %> </small>
+        </ul>
+      </div>
+      <% end %><br>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h3 class="text-center">Contacts at <%= @company.name %></h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Contact Name</th>
+          <th>Title</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @contacts.each.with_index do |contact, i| %>
+        <tr>
+          <td><%= contact.name %></td>
+          <td><%= contact.title %></td>
+          <td><%= contact.email %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<h4>Add New Company Contact</h4>
-<%= render partial: 'contacts/form' %>
+<div class="new-company-form-jobs-index">
+  <h4>Add New Company Contact</h4>
+  <%= render partial: 'contacts/form' %>
+</div>

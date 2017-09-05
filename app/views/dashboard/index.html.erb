@@ -1,19 +1,29 @@
-<h1>DASHBOARD</h1>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-5">
+    <h3>Count of jobs by level of interest</h3>
+    <hr>
+    <% @jobs_by_interest.each do |key, value| %>
+    <p>Tracking <%= value.count %> Jobs with a Level <%= key %> interest.</p>
+    <% end %>
 
-<h3>Count of jobs by level of interest</h3>
-<% @jobs_by_interest.each do |key, value| %>
-<p>Tracking <%= value.count %> Jobs with a Level <%= key %> interest.</p>
-<% end %>
+  </div>
+  <div class="col-md-5">
+    <h3>Deeper Job Analysis </h3>
+    <hr>
+    <h4>Top Three Companies by AVG level of interest</h4>
+    <% @jobs_top_3.each do |key, value| %>
+    <%= link_to key.name, company_path(key) %> with an average interest of <strong><%= value.to_i %></strong><br>
+    <% end %>
 
+    <h4>Job Count by Location</h4>
+    <% @jobs_by_city.each do |company| %>
+    Jobs in <%= link_to company[1].first.company.name, company_jobs_path(company[1].first.company) %>: <%= company[1].count %> <br>
+    <% end %>
 
+  </div>
+  <div class="col-md-1">
+  </div>
 
-<h3>Deeper Job Analysis </h3>
-<h4>Top Three Companies by AVG level of interest</h4>
-<% @jobs_top_3.each do |key, value| %>
-  <%= link_to key.name, company_path(key) %> with an average interest of <strong><%= value.to_i %></strong><br>
-<% end %>
-
-<h4>Job Count by Location</h4>
-<% @jobs_by_city.each do |company| %>
-Jobs in <%= link_to company[1].first.company.name, company_jobs_path(company[1].first.company) %>: <%= company[1].count %> <br>
-<% end %>
+</div>
